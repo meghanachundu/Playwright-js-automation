@@ -2,6 +2,7 @@ export class CartPage {
   constructor(page) {
     this.page = page;
     this.cartItems = page.locator('.cart_item');
+    this.checkoutButton = page.locator('[data-test="checkout"]'); 
   }
 
   async goto() {
@@ -15,4 +16,9 @@ export class CartPage {
   async assertProductNotInCart(name) {
     await this.page.locator('.cart_item').filter({ hasText: name }).isHidden();
   }
+
+  async checkout() {
+        await this.checkoutButton.click();
+    }
+
 }
